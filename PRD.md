@@ -1,20 +1,20 @@
 # Product Requirements Document (PRD)
 
-## Aslam Tuition Classes — One-Page Landing Website
+## Nes Asha (A School For Slow Learners) — One-Page Landing Website
 
 | Field | Value |
 |---|---|
 | Document version | 1.0 |
 | Date | 19 October 2026 |
 | Status | Approved for build |
-| Owner | Aslam Tuition Classes |
+| Owner | Nes Asha |
 
 ---
 
 ## 1. Overview
 
 ### 1.1 Problem
-Aslam Tuition Classes (Dadar East, Mumbai) offers NIOS home tuition and academic support, but prospective students/parents currently learn about the classes only through word of mouth or walk-ins. There is no single, shareable link that answers the three questions every enquiry asks: **What do you teach? When? Where? How do I call you?**
+Nes Asha (Dadar East, Mumbai) offers NIOS home tuition and academic support, but prospective students/parents currently learn about the classes only through word of mouth or walk-ins. There is no single, shareable link that answers the three questions every enquiry asks: **What do you teach? When? Where? How do I call you?**
 
 ### 1.2 Solution
 A single-page, mobile-first landing website that:
@@ -42,7 +42,7 @@ Convert a visitor into a phone/WhatsApp enquiry. The page has **one** conversion
 | **Parent / guardian** | Parent of a school or NIOS student in Dadar, Parel, Matunga, Sion. | Trust, proximity, timings that fit school hours, quick call. |
 | **Working student** | Employed learner who can only attend early-morning or weekend batches. | Clear timetable, weekend availability. |
 
-**Geography:** Primary — Dadar East, Parel, Hindmata, Matunga, Wadala, Sion, Lower Parel (≈ 14-minute walk from Parel station).
+**Geography:** Primary — Dadar East, Parel, Hindmata, Matunga, Wadala, Sion, Lower Parel (≈ 10-minute walk from Dadar East station, ≈ 14-minute walk from Parel station).
 
 ---
 
@@ -50,11 +50,12 @@ Convert a visitor into a phone/WhatsApp enquiry. The page has **one** conversion
 
 | Item | Value |
 |---|---|
-| Name | Aslam Tuition Classes (NIOS Home Tuition) |
+| Name | Nes Asha (A School For Slow Learners) |
+| Contact person | Mr. Aslam Kundiwala |
 | Address | RANGARI MASJID BLDG, 158/B, Dada Saheb Phalke Marg, Hindmata, Dadar East, Mumbai, Maharashtra 400014 |
 | Phone (E.164) | `+919702074658` |
 | Phone (display) | +91 97020 74658 |
-| Proximity note | Approx. 14 minutes walk from Parel |
+| Proximity note | Approx. 10 min walk from Dadar (East); 14 min from Parel |
 | Offerings | NIOS Home Tuition, academic support for students |
 
 ### 3.1 Class schedule (as provided)
@@ -97,7 +98,7 @@ Convert a visitor into a phone/WhatsApp enquiry. The page has **one** conversion
 | F4 | Sticky header with business name + Call button, visible after scroll. | P1 |
 | F5 | Sticky bottom call bar on mobile viewports (< 768 px) with Call + WhatsApp. | P0 |
 | F6 | About / "Why choose us" section with 4 benefit cards. | P1 |
-| F7 | Location section with full address, walk-from-Parel note, and "Get Directions" link to Google Maps. | P0 |
+| F7 | Location section with full address, walk-from-Dadar-and-Parel note, and "Get Directions" link to Google Maps. | P0 |
 | F8 | Embedded Google Map (no API key) centred on the address. | P0 |
 | F9 | FAQ section using native `<details>/<summary>` accordions, functional without JavaScript. | P1 |
 | F10 | FAQ must include the full weekly timetable (§3.1). | P0 |
@@ -108,7 +109,7 @@ Convert a visitor into a phone/WhatsApp enquiry. The page has **one** conversion
 
 | ID | Requirement | Target |
 |---|---|---|
-| N1 | Single static file, no build step, no external JS libraries. | 1 × `index.html` |
+| N1 | Static page, no build step, no external JS libraries. | `index.html` + `images/` (5 photos) |
 | N2 | Fully responsive at 360 px, 768 px, 1024 px, 1440 px. | No horizontal scroll |
 | N3 | First Contentful Paint < 1.5 s on throttled 4G. | Lighthouse |
 | N4 | Works with JavaScript disabled (except scroll header nicety). | Manual test |
@@ -123,8 +124,8 @@ Convert a visitor into a phone/WhatsApp enquiry. The page has **one** conversion
 
 ```
 ┌ Sticky header ────────────────────── [Call] ┐
-│ 1. Hero        — headline, subline, Call + WhatsApp CTAs, trust chips
-│ 2. About       — intro paragraph + 4 benefit cards
+│ 1. Hero        — photo background, headline, subline, Call + WhatsApp CTAs, "At a glance" panel
+│ 2. About       — intro paragraph + 4 photo benefit cards
 │ 3. Location    — address card, directions button, embedded map iframe
 │ 4. FAQ         — 6 accordions incl. full timetable
 │ 5. Footer      — name, phone, address, © year
@@ -133,7 +134,7 @@ Convert a visitor into a phone/WhatsApp enquiry. The page has **one** conversion
 
 ### 6.1 FAQ content outline
 
-1. Where are you located? (address + Parel walk note)
+1. Where are you located? (address + Dadar/Parel walk note)
 2. What are the class timings? (full weekly schedule)
 3. Do you offer NIOS home tuition?
 4. What subjects do you cover?
@@ -150,7 +151,7 @@ Convert a visitor into a phone/WhatsApp enquiry. The page has **one** conversion
 | Primary colour | Navy / indigo (`#1e3a8a` family) with accent (`#f59e0b` amber for CTA highlights) |
 | Surfaces | White cards on light slate background |
 | Typography | System font stack (`system-ui, -apple-system, Segoe UI, Roboto…`) — zero font requests |
-| Imagery | None required (icon-only, inline SVG); keeps the file self-contained |
+| Imagery | Free-licensed Pixabay stock photos (Indian education scenes): hero background + 4 card headers. CDN URLs with local `images/` fallback via `onerror` |
 | Layout | Mobile-first, max content width 1080 px, 8 px spacing scale |
 
 ---
@@ -159,12 +160,12 @@ Convert a visitor into a phone/WhatsApp enquiry. The page has **one** conversion
 
 | Aspect | Decision | Rationale |
 |---|---|---|
-| Stack | Single static `index.html` with embedded `<style>` and minimal inline `<script>` | Hostable anywhere (Netlify, GitHub Pages, shared hosting, cPanel), zero tooling, easy to WhatsApp the file itself |
+| Stack | `index.html` (embedded `<style>`, minimal inline `<script>`) + `images/` photo folder | Hostable anywhere (Netlify, GitHub Pages, shared hosting, cPanel), zero tooling |
 | Map | `https://maps.google.com/maps?q=<url-encoded address>&z=16&output=embed` in an `<iframe>` | Keyless, no billing account needed |
 | Call | `tel:+919702074658` | Universal one-tap dial on mobile |
 | WhatsApp | `https://wa.me/919702074658?text=<encoded message>` | Opens WhatsApp Web/app with message ready |
 | FAQ | Native `<details>` | Accessible, works without JS |
-| JS budget | ≤ 15 lines | Header scroll state + current year only |
+| JS budget | ≤ 15 lines + per-image `onerror` fallbacks | Header scroll state, current year, image fallback |
 
 ---
 
@@ -172,7 +173,7 @@ Convert a visitor into a phone/WhatsApp enquiry. The page has **one** conversion
 
 | # | Item | Status |
 |---|---|---|
-| A1 | Business name shown as "Aslam Tuition Classes"; NIOS used as descriptor. | Assumed |
+| A1 | Business name shown as "Nes Asha"; "A School For Slow Learners" used as descriptor; NIOS used in body copy. Contact person: Mr. Aslam Kundiwala. | Assumed |
 | A2 | Page language is English only. | Confirmed |
 | A3 | Afternoon tutorial block timings TBD — shown as a note, not fabricated times. | **Open — needs client input** |
 | A4 | Subject list not provided; FAQ answers generically ("core academic subjects + NIOS secondary & senior secondary"). | Assumed, needs review |

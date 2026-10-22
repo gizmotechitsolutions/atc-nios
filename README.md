@@ -1,6 +1,6 @@
-# Aslam Tuition Classes — Landing Page
+# Nes Asha — Landing Page
 
-Single-file, mobile-first landing page for **Aslam Tuition Classes** (NIOS Home Tuition, Dadar East, Mumbai).
+Single-page, mobile-first landing page for **Nes Asha** (A School For Slow Learners, Dadar East, Mumbai), contact person: Mr. Aslam Kundiwala.
 
 **Live action:** one goal — get the visitor to call or WhatsApp.
 
@@ -21,13 +21,14 @@ Or double-click `index.html` in File Explorer.
 ## What's inside
 
 ```
-opencode/
+atc/
 ├── index.html   # the entire landing page (HTML + CSS + tiny JS)
+├── images/      # 5 stock photos (local fallbacks for the CDN URLs)
 ├── PRD.md       # product requirements document
 └── README.md    # this file
 ```
 
-Everything (styles, icons, scripts) is inlined in `index.html`. Total size ≈ 25 KB — no fonts, images, or libraries to download.
+Styles, icons, and scripts are all inlined in `index.html` (≈ 27 KB). Photos (≈ 540 KB total) load from the Pixabay CDN and fall back to the local `images/` folder automatically. No fonts or libraries to download.
 
 ---
 
@@ -36,9 +37,9 @@ Everything (styles, icons, scripts) is inlined in `index.html`. Total size ≈ 2
 | # | Section | Purpose |
 |---|---|---|
 | 1 | Sticky header | Business name + Call button, appears on scroll |
-| 2 | Hero | Headline, subline, Call + WhatsApp CTAs, trust chips |
-| 3 | About / Why choose us | Intro + 4 benefit cards |
-| 4 | Location | Full address, walk-from-Parel note, embedded Google Map, Get Directions |
+| 2 | Hero | Photo background, headline, benefit-led subline, Call + WhatsApp CTAs, "At a glance" panel |
+| 3 | About / Why choose us | Intro + 4 photo benefit cards |
+| 4 | Location | Full address, walk-from-Dadar-and-Parel note, embedded Google Map, Get Directions |
 | 5 | FAQ | Accordion answers incl. full weekly timetable |
 | 6 | Footer | Name, phone, address, © year |
 | — | Sticky mobile bar | Call + WhatsApp buttons fixed at bottom (< 768 px) |
@@ -68,7 +69,7 @@ Find & replace **all** occurrences of `9702074658` (used in `tel:`, `wa.me`, dis
 
 Search for `wa.me/919702074658?text=` — the message after `text=` is URL-encoded. Example decoded text:
 
-> Hello, I am interested in NIOS Home Tuition at Aslam Tuition Classes. Please share details.
+> Hello, I am interested in NIOS Home Tuition at Nes Asha. Please share details.
 
 ### Change the address
 
@@ -100,6 +101,15 @@ The palette is defined as CSS custom properties at the top of the `<style>` bloc
 }
 ```
 
+### Change the photos
+
+Five photos live in `images/` (local fallbacks) and are referenced by their Pixabay CDN URL in `index.html`. To swap one:
+
+1. Replace the file in `images/` with your new image.
+2. Update the matching `<img src="…">` URL and its `onerror` fallback path in `index.html`.
+
+All photos are from [Pixabay](https://pixabay.com) — free for commercial use, no attribution required.
+
 ---
 
 ## Deploying (any option works)
@@ -107,10 +117,10 @@ The palette is defined as CSS custom properties at the top of the `<style>` bloc
 | Host | Steps |
 |---|---|
 | **Netlify Drop** | Drag the folder onto [app.netlify.com/drop](https://app.netlify.com/drop) — live in ~10 s. |
-| **GitHub Pages** | Push `index.html` to a repo → Settings → Pages → deploy from branch `main`. |
-| **cPanel / shared hosting** | Upload `index.html` into `public_html/`. |
+| **GitHub Pages** | Push `index.html` **and `images/`** to a repo → Settings → Pages → deploy from branch `main`. |
+| **cPanel / shared hosting** | Upload `index.html` and the `images/` folder into `public_html/`. |
 | **Vercel** | `npx vercel --prod` in this folder (framework preset: *Other*). |
-| **WhatsApp** | The file is small enough to send directly on WhatsApp as a document. |
+| **WhatsApp** | Send the whole folder as a zipped document (photos live in `images/`). |
 
 No environment variables, no server, no database.
 
@@ -141,6 +151,7 @@ Modern evergreen browsers: Chrome, Edge, Firefox, Safari (last 2 versions). The 
 - [ ] Directions link opens Google Maps with the correct destination
 - [ ] No horizontal scroll at 360 px width
 - [ ] Timings in the FAQ match the client-confirmed schedule
+- [ ] All 5 photos load (CDN) — and still appear from `images/` when the CDN is blocked
 - [ ] Page renders with JavaScript disabled
 
 ---
